@@ -117,90 +117,108 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return React.createElement('header', {
-    className: 'bg-white shadow-md sticky top-0 z-50'
+    className: 'bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100'
   },
     React.createElement('div', {
-      className: 'container mx-auto px-4'
+      className: 'container mx-auto px-6'
     },
       React.createElement('div', {
-        className: 'flex items-center justify-between py-4'
+        className: 'flex items-center justify-between py-5'
       },
         // Logo
         React.createElement('div', {
-          className: 'flex items-center cursor-pointer',
+          className: 'flex items-center cursor-pointer transition-transform hover:scale-105',
           onClick: () => setCurrentPage('home')
         },
           React.createElement('img', {
             src: '/images/tatvaani-logo.png',
-            alt: 'Tatvaani',
-            className: 'h-12 w-auto mr-3'
+            alt: 'Tatvaani - Essence of India',
+            className: 'h-14 w-auto mr-3 drop-shadow-md'
           }),
-          React.createElement('h1', {
-            className: 'text-xl font-bold text-tatvaani-teal'
-          }, 'Tatvaani')
+          React.createElement('div', {
+            className: 'hidden md:block'
+          },
+            React.createElement('h1', {
+              className: 'text-2xl font-bold text-tatvaani-teal tracking-wide'
+            }, 'Tatvaani'),
+            React.createElement('p', {
+              className: 'text-xs text-gray-600 font-medium tracking-widest uppercase'
+            }, 'Essence of India')
+          )
         ),
 
         // Desktop Navigation
         React.createElement('nav', {
-          className: 'hidden md:flex items-center space-x-8'
+          className: 'hidden lg:flex items-center space-x-1'
         },
           React.createElement('button', {
             onClick: () => setCurrentPage('home'),
-            className: `hover:text-tatvaani-orange transition-colors ${currentPage === 'home' ? 'text-tatvaani-orange font-semibold' : 'text-gray-700'}`
+            className: `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === 'home' ? 'bg-tatvaani-orange text-white shadow-md' : 'text-gray-700 hover:bg-tatvaani-light hover:text-tatvaani-orange'}`
           }, 'Home'),
           React.createElement('button', {
             onClick: () => setCurrentPage('products'),
-            className: `hover:text-tatvaani-orange transition-colors ${currentPage.startsWith('products') ? 'text-tatvaani-orange font-semibold' : 'text-gray-700'}`
+            className: `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage.startsWith('products') ? 'bg-tatvaani-orange text-white shadow-md' : 'text-gray-700 hover:bg-tatvaani-light hover:text-tatvaani-orange'}`
           }, 'Products'),
           React.createElement('button', {
             onClick: () => setCurrentPage('about'),
-            className: `hover:text-tatvaani-orange transition-colors ${currentPage === 'about' ? 'text-tatvaani-orange font-semibold' : 'text-gray-700'}`
+            className: `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === 'about' ? 'bg-tatvaani-orange text-white shadow-md' : 'text-gray-700 hover:bg-tatvaani-light hover:text-tatvaani-orange'}`
           }, 'About'),
           React.createElement('button', {
             onClick: () => setCurrentPage('contact'),
-            className: `hover:text-tatvaani-orange transition-colors ${currentPage === 'contact' ? 'text-tatvaani-orange font-semibold' : 'text-gray-700'}`
-          }, 'Contact')
+            className: `px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentPage === 'contact' ? 'bg-tatvaani-orange text-white shadow-md' : 'text-gray-700 hover:bg-tatvaani-light hover:text-tatvaani-orange'}`
+          }, 'Contact'),
+          React.createElement('button', {
+            onClick: () => setCurrentPage('shipping'),
+            className: `px-4 py-2 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${currentPage === 'shipping' ? 'bg-tatvaani-orange text-white shadow-md' : 'text-gray-700 hover:bg-tatvaani-light hover:text-tatvaani-orange'}`
+          }, 'International Shipping')
         ),
 
         // User Actions
         React.createElement('div', {
-          className: 'flex items-center space-x-4'
+          className: 'flex items-center space-x-3'
         },
           // Cart
           React.createElement('button', {
             onClick: () => setCurrentPage('cart'),
-            className: 'relative text-gray-700 hover:text-tatvaani-orange transition-colors'
+            className: 'relative p-3 rounded-full bg-gray-50 hover:bg-tatvaani-light text-gray-700 hover:text-tatvaani-orange transition-all duration-300 shadow-sm hover:shadow-md'
           },
-            React.createElement('i', { className: 'fas fa-shopping-cart text-xl' }),
+            React.createElement('i', { className: 'fas fa-shopping-bag text-lg' }),
             getCartCount() > 0 && React.createElement('span', {
-              className: 'absolute -top-2 -right-2 bg-tatvaani-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center'
+              className: 'absolute -top-1 -right-1 bg-tatvaani-red text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-semibold shadow-lg animate-pulse'
             }, getCartCount())
           ),
 
           // User Menu
           user ? (
             React.createElement('div', {
-              className: 'flex items-center space-x-4'
+              className: 'flex items-center space-x-3'
             },
-              React.createElement('span', {
-                className: 'text-gray-700'
-              }, `Hello, ${user.name}`),
+              React.createElement('div', {
+                className: 'hidden md:flex items-center space-x-2'
+              },
+                React.createElement('div', {
+                  className: 'h-8 w-8 bg-tatvaani-orange rounded-full flex items-center justify-center text-white font-semibold text-sm'
+                }, user.name.charAt(0).toUpperCase()),
+                React.createElement('span', {
+                  className: 'text-gray-700 font-medium'
+                }, `Hi, ${user.name.split(' ')[0]}`)
+              ),
               React.createElement('button', {
                 onClick: logout,
-                className: 'bg-tatvaani-red text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors'
+                className: 'bg-tatvaani-red text-white px-5 py-2.5 rounded-lg hover:bg-red-700 transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:scale-105'
               }, 'Logout')
             )
           ) : (
             React.createElement('button', {
               onClick: () => setCurrentPage('login'),
-              className: 'bg-tatvaani-orange text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors'
-            }, 'Login')
+              className: 'bg-gradient-to-r from-tatvaani-orange to-tatvaani-red text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold transform hover:scale-105'
+            }, 'Sign In')
           ),
 
           // Mobile Menu Toggle
           React.createElement('button', {
             onClick: () => setIsMenuOpen(!isMenuOpen),
-            className: 'md:hidden text-gray-700'
+            className: 'lg:hidden p-2 rounded-lg bg-gray-50 hover:bg-tatvaani-light text-gray-700 hover:text-tatvaani-orange transition-all duration-300'
           },
             React.createElement('i', { className: 'fas fa-bars text-xl' })
           )
@@ -241,7 +259,14 @@ const Header = () => {
               setIsMenuOpen(false);
             },
             className: 'text-left text-gray-700 hover:text-tatvaani-orange transition-colors'
-          }, 'Contact')
+          }, 'Contact'),
+          React.createElement('button', {
+            onClick: () => {
+              setCurrentPage('shipping');
+              setIsMenuOpen(false);
+            },
+            className: 'text-left text-gray-700 hover:text-tatvaani-orange transition-colors'
+          }, 'International Shipping')
         )
       )
     )
@@ -341,8 +366,13 @@ const HeroCarousel = ({ setCurrentPage }) => {
         }, heroImages[currentSlide].description),
         React.createElement('button', {
           onClick: () => setCurrentPage('products'),
-          className: 'bg-tatvaani-orange text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105'
-        }, 'Explore Our Heritage Collection')
+          className: 'bg-gradient-to-r from-tatvaani-orange via-tatvaani-red to-tatvaani-teal text-white px-10 py-4 rounded-2xl text-xl font-bold hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 border-2 border-white/20 backdrop-blur-sm'
+        }, 
+          React.createElement('span', { className: 'flex items-center' },
+            'Explore Our Heritage Collection ',
+            React.createElement('i', { className: 'fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-2' })
+          )
+        )
       )
     ),
 
@@ -1531,6 +1561,198 @@ const AboutPage = () => {
   );
 };
 
+// International Shipping Page Component
+const ShippingPage = () => {
+  const { setCurrentPage } = useAuth();
+
+  return React.createElement('div', {},
+    // Hero Section
+    React.createElement('section', {
+      className: 'bg-gradient-to-r from-tatvaani-teal via-tatvaani-orange to-tatvaani-red text-white py-20'
+    },
+      React.createElement('div', {
+        className: 'container mx-auto px-4 text-center'
+      },
+        React.createElement('div', {
+          className: 'max-w-4xl mx-auto'
+        },
+          React.createElement('i', { className: 'fas fa-globe text-6xl mb-6 opacity-90' }),
+          React.createElement('h1', {
+            className: 'text-5xl md:text-6xl font-bold mb-6'
+          }, 'International Shipping'),
+          React.createElement('p', {
+            className: 'text-xl md:text-2xl leading-relaxed'
+          }, 'Bringing India\'s authentic heritage to your doorstep, anywhere in the world')
+        )
+      )
+    ),
+
+    // Shipping Information
+    React.createElement('section', {
+      className: 'py-16 bg-white'
+    },
+      React.createElement('div', {
+        className: 'container mx-auto px-4'
+      },
+        React.createElement('div', {
+          className: 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'
+        },
+          React.createElement('div', {},
+            React.createElement('h2', {
+              className: 'text-4xl font-bold text-gray-800 mb-6'
+            }, 'Global Delivery Network'),
+            React.createElement('p', {
+              className: 'text-gray-600 text-lg leading-relaxed mb-6'
+            }, 'We partner with trusted international courier services to ensure your handcrafted treasures reach you safely, no matter where you are in the world.'),
+            React.createElement('div', {
+              className: 'space-y-4'
+            },
+              React.createElement('div', {
+                className: 'flex items-center'
+              },
+                React.createElement('i', { className: 'fas fa-check-circle text-tatvaani-green text-xl mr-3' }),
+                React.createElement('span', { className: 'text-gray-700' }, 'Free shipping on orders above $75')
+              ),
+              React.createElement('div', {
+                className: 'flex items-center'
+              },
+                React.createElement('i', { className: 'fas fa-check-circle text-tatvaani-green text-xl mr-3' }),
+                React.createElement('span', { className: 'text-gray-700' }, 'Secure packaging for fragile items')
+              ),
+              React.createElement('div', {
+                className: 'flex items-center'
+              },
+                React.createElement('i', { className: 'fas fa-check-circle text-tatvaani-green text-xl mr-3' }),
+                React.createElement('span', { className: 'text-gray-700' }, 'Real-time tracking available')
+              ),
+              React.createElement('div', {
+                className: 'flex items-center'
+              },
+                React.createElement('i', { className: 'fas fa-check-circle text-tatvaani-green text-xl mr-3' }),
+                React.createElement('span', { className: 'text-gray-700' }, 'Insurance coverage included')
+              )
+            )
+          ),
+          React.createElement('div', {},
+            React.createElement('img', {
+              src: '/api/placeholder/600/400?text=Global+Shipping+Network',
+              alt: 'Global shipping network',
+              className: 'w-full h-96 object-cover rounded-2xl shadow-xl'
+            })
+          )
+        )
+      )
+    ),
+
+    // Shipping Zones
+    React.createElement('section', {
+      className: 'py-16 bg-tatvaani-light'
+    },
+      React.createElement('div', {
+        className: 'container mx-auto px-4'
+      },
+        React.createElement('div', {
+          className: 'text-center mb-12'
+        },
+          React.createElement('h2', {
+            className: 'text-4xl font-bold text-gray-800 mb-4'
+          }, 'Shipping Zones & Delivery Time'),
+          React.createElement('p', {
+            className: 'text-gray-600 max-w-2xl mx-auto'
+          }, 'Estimated delivery times to major international destinations')
+        ),
+        React.createElement('div', {
+          className: 'grid grid-cols-1 md:grid-cols-3 gap-8'
+        },
+          React.createElement('div', {
+            className: 'bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow'
+          },
+            React.createElement('div', {
+              className: 'bg-tatvaani-orange text-white p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center'
+            },
+              React.createElement('i', { className: 'fas fa-plane text-2xl' })
+            ),
+            React.createElement('h3', {
+              className: 'text-2xl font-bold text-gray-800 mb-4'
+            }, 'Zone 1'),
+            React.createElement('p', {
+              className: 'text-gray-600 mb-4'
+            }, 'USA, Canada, UK, Australia'),
+            React.createElement('div', {
+              className: 'text-3xl font-bold text-tatvaani-orange mb-2'
+            }, '7-12 Days'),
+            React.createElement('p', {
+              className: 'text-gray-500'
+            }, 'Express delivery available')
+          ),
+          React.createElement('div', {
+            className: 'bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow'
+          },
+            React.createElement('div', {
+              className: 'bg-tatvaani-teal text-white p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center'
+            },
+              React.createElement('i', { className: 'fas fa-ship text-2xl' })
+            ),
+            React.createElement('h3', {
+              className: 'text-2xl font-bold text-gray-800 mb-4'
+            }, 'Zone 2'),
+            React.createElement('p', {
+              className: 'text-gray-600 mb-4'
+            }, 'Europe, Japan, Singapore'),
+            React.createElement('div', {
+              className: 'text-3xl font-bold text-tatvaani-teal mb-2'
+            }, '10-15 Days'),
+            React.createElement('p', {
+              className: 'text-gray-500'
+            }, 'Standard delivery')
+          ),
+          React.createElement('div', {
+            className: 'bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow'
+          },
+            React.createElement('div', {
+              className: 'bg-tatvaani-red text-white p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center'
+            },
+              React.createElement('i', { className: 'fas fa-globe text-2xl' })
+            ),
+            React.createElement('h3', {
+              className: 'text-2xl font-bold text-gray-800 mb-4'
+            }, 'Zone 3'),
+            React.createElement('p', {
+              className: 'text-gray-600 mb-4'
+            }, 'Other Countries'),
+            React.createElement('div', {
+              className: 'text-3xl font-bold text-tatvaani-red mb-2'
+            }, '15-21 Days'),
+            React.createElement('p', {
+              className: 'text-gray-500'
+            }, 'Economy delivery')
+          )
+        )
+      )
+    ),
+
+    // CTA Section
+    React.createElement('section', {
+      className: 'py-16 bg-gradient-to-r from-tatvaani-teal to-tatvaani-orange text-white'
+    },
+      React.createElement('div', {
+        className: 'container mx-auto px-4 text-center'
+      },
+        React.createElement('h2', {
+          className: 'text-4xl font-bold mb-4'
+        }, 'Ready to Ship Worldwide?'),
+        React.createElement('p', {
+          className: 'text-xl mb-8 max-w-2xl mx-auto'
+        }, 'Browse our collection of authentic Indian handicrafts and get them delivered to your doorstep'),
+        React.createElement('button', {
+          onClick: () => setCurrentPage('products'),
+          className: 'bg-white text-tatvaani-orange px-8 py-4 rounded-2xl text-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105'
+        }, 'Start Shopping Now')
+      )
+    )
+  );
+};
+
 // Contact Page Component
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -2009,6 +2231,12 @@ const Footer = () => {
                 onClick: () => setCurrentPage('contact'),
                 className: 'text-gray-400 hover:text-white transition-colors'
               }, 'Contact')
+            ),
+            React.createElement('li', {},
+              React.createElement('button', {
+                onClick: () => setCurrentPage('shipping'),
+                className: 'text-gray-400 hover:text-white transition-colors'
+              }, 'International Shipping')
             )
           )
         ),
@@ -2103,6 +2331,8 @@ const App = () => {
       return React.createElement(AuthPage);
     } else if (currentPage === 'cart') {
       return React.createElement(CartPage);
+    } else if (currentPage === 'shipping') {
+      return React.createElement(ShippingPage);
     } else {
       return React.createElement(HomePage);
     }
