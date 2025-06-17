@@ -1,0 +1,10 @@
+
+This directory will contain product images and other assets for the Tatvaani ecommerce website.
+
+For a production deployment, you would replace these placeholder references with actual high-quality product images.
+
+Image requirements:
+- Product images: 600x400px minimum
+- Category images: 400x250px
+- Team photos: 200x200px
+- All images should be optimized for web (WebP format recommended)
