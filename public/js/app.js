@@ -133,7 +133,11 @@ const Header = () => {
           React.createElement('img', {
             src: '/images/tatvaani-logo.png',
             alt: 'Tatvaani - Essence of India',
-            className: 'h-16 w-auto mr-3'
+            className: 'h-16 w-auto mr-3',
+            onError: (e) => {
+              console.log('Logo failed to load');
+              e.target.style.display = 'none';
+            }
           }),
           React.createElement('div', {
             className: 'hidden md:block'
