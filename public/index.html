@@ -13,9 +13,11 @@
                 extend: {
                     colors: {
                         'tatvaani-orange': '#FF6B35',
-                        'tatvaani-red': '#CC2936',
-                        'tatvaani-teal': '#006A6B',
-                        'tatvaani-light': '#FFF8F3'
+                        'tatvaani-red': '#B71C1C',
+                        'tatvaani-teal': '#00695C',
+                        'tatvaani-light': '#FFF8F3',
+                        'tatvaani-green': '#2E7D32',
+                        'tatvaani-gold': '#FFB300'
                     },
                     fontFamily: {
                         'hindi': ['Noto Sans Devanagari', 'sans-serif']
@@ -31,6 +33,18 @@
         }
         .hindi-text {
             font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        .traditional-border {
+            border-image: linear-gradient(90deg, #FF6B35, #B71C1C, #00695C, #2E7D32) 1;
+            border-width: 3px;
+            border-style: solid;
+        }
+        .pattern-bg {
+            background-image: radial-gradient(circle at 20px 20px, #FF6B35 2px, transparent 2px),
+                              radial-gradient(circle at 60px 60px, #B71C1C 2px, transparent 2px);
+            background-size: 80px 80px;
+            background-position: 0 0, 40px 40px;
+            opacity: 0.1;
         }
     </style>
 </head>

@@ -130,12 +130,14 @@ const Header = () => {
           className: 'flex items-center cursor-pointer',
           onClick: () => setCurrentPage('home')
         },
+          React.createElement('img', {
+            src: '/images/tatvaani-logo.png',
+            alt: 'Tatvaani - Essence of India',
+            className: 'h-16 w-auto mr-3'
+          }),
           React.createElement('div', {
-            className: 'bg-tatvaani-orange text-white p-3 rounded-full mr-3'
+            className: 'hidden md:block'
           },
-            React.createElement('i', { className: 'fas fa-leaf text-xl' })
-          ),
-          React.createElement('div', {},
             React.createElement('h1', {
               className: 'text-2xl font-bold text-tatvaani-teal'
             }, 'Tatvaani'),
@@ -274,16 +276,24 @@ const HomePage = () => {
   return React.createElement('div', {},
     // Hero Section
     React.createElement('section', {
-      className: 'bg-gradient-to-r from-tatvaani-teal to-tatvaani-orange text-white py-20'
+      className: 'bg-gradient-to-r from-tatvaani-teal via-tatvaani-green to-tatvaani-orange text-white py-20 relative overflow-hidden'
     },
       React.createElement('div', {
-        className: 'container mx-auto px-4 text-center'
+        className: 'absolute inset-0 bg-black bg-opacity-20'
+      }),
+      React.createElement('div', {
+        className: 'container mx-auto px-4 text-center relative z-10'
       },
+        React.createElement('img', {
+          src: '/images/tatvaani-logo.png',
+          alt: 'Tatvaani',
+          className: 'h-24 w-auto mx-auto mb-6 filter brightness-0 invert'
+        }),
         React.createElement('h1', {
           className: 'text-5xl md:text-6xl font-bold mb-6'
         }, 'Tatvaani'),
         React.createElement('p', {
-          className: 'text-2xl md:text-3xl mb-4 hindi-text'
+          className: 'text-2xl md:text-3xl mb-4 hindi-text font-semibold'
         }, 'तत्वानि'),
         React.createElement('p', {
           className: 'text-xl md:text-2xl mb-8 opacity-90'
@@ -1737,11 +1747,11 @@ const AuthPage = () => {
       React.createElement('div', {
         className: 'text-center mb-8'
       },
-        React.createElement('div', {
-          className: 'bg-tatvaani-orange text-white p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center'
-        },
-          React.createElement('i', { className: 'fas fa-user text-2xl' })
-        ),
+        React.createElement('img', {
+          src: '/images/tatvaani-logo.png',
+          alt: 'Tatvaani',
+          className: 'h-16 w-auto mx-auto mb-4'
+        }),
         React.createElement('h2', {
           className: 'text-2xl font-bold text-gray-800'
         }, isLogin ? 'Welcome Back' : 'Create Account'),
@@ -1840,11 +1850,11 @@ const Footer = () => {
           React.createElement('div', {
             className: 'flex items-center mb-4'
           },
-            React.createElement('div', {
-              className: 'bg-tatvaani-orange text-white p-2 rounded-full mr-3'
-            },
-              React.createElement('i', { className: 'fas fa-leaf' })
-            ),
+            React.createElement('img', {
+              src: '/images/tatvaani-logo.png',
+              alt: 'Tatvaani',
+              className: 'h-12 w-auto mr-3 brightness-0 invert'
+            }),
             React.createElement('div', {},
               React.createElement('h3', {
                 className: 'text-xl font-bold'
