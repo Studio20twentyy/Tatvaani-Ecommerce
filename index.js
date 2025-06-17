@@ -363,7 +363,7 @@ app.post('/api/newsletter', (req, res) => {
   res.json({ message: 'Subscribed to newsletter successfully' });
 });
 
-// Serve React app
+// Serve React app for all non-API routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
