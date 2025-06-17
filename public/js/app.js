@@ -130,21 +130,9 @@ const Header = () => {
           className: 'flex items-center cursor-pointer',
           onClick: () => setCurrentPage('home')
         },
-          React.createElement('img', {
-            src: '/images/tatvaani-logo.png',
-            alt: 'Tatvaani - Essence of India',
-            className: 'h-16 w-auto mr-3'
-          }),
-          React.createElement('div', {
-            className: 'hidden md:block'
-          },
-            React.createElement('h1', {
-              className: 'text-2xl font-bold text-tatvaani-teal'
-            }, 'Tatvaani'),
-            React.createElement('p', {
-              className: 'text-sm text-gray-600 hindi-text'
-            }, 'तत्वानि - Essence of India')
-          )
+          React.createElement('h1', {
+            className: 'text-2xl font-bold text-tatvaani-teal'
+          }, 'Tatvaani')
         ),
 
         // Desktop Navigation
