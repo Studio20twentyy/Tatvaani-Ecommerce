@@ -130,8 +130,13 @@ const Header = () => {
           className: 'flex items-center cursor-pointer',
           onClick: () => setCurrentPage('home')
         },
+          React.createElement('img', {
+            src: '/images/tatvaani-logo.png',
+            alt: 'Tatvaani',
+            className: 'h-12 w-auto mr-3'
+          }),
           React.createElement('h1', {
-            className: 'text-2xl font-bold text-tatvaani-teal'
+            className: 'text-xl font-bold text-tatvaani-teal'
           }, 'Tatvaani')
         ),
 
@@ -243,6 +248,133 @@ const Header = () => {
   );
 };
 
+// Hero Carousel Component
+const HeroCarousel = ({ setCurrentPage }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroImages = [
+    {
+      url: '/api/placeholder/1200/600?text=Indian+Artisan+Women+at+Work',
+      title: 'Empowering Artisan Communities',
+      subtitle: 'Supporting SHG women across India',
+      description: 'Every purchase supports rural women artisans and their families'
+    },
+    {
+      url: '/api/placeholder/1200/600?text=Traditional+Handloom+Weaving',
+      title: 'Preserving Heritage Crafts',
+      subtitle: 'Traditional handloom weaving',
+      description: 'Authentic techniques passed down through generations'
+    },
+    {
+      url: '/api/placeholder/1200/600?text=Spice+Garden+Cultivation',
+      title: 'Organic Spice Gardens',
+      subtitle: 'From farm to your kitchen',
+      description: 'Pure, organic spices cultivated with traditional methods'
+    },
+    {
+      url: '/api/placeholder/1200/600?text=Children+Education+Program',
+      title: 'Creating Social Impact',
+      subtitle: 'Education for underprivileged children',
+      description: 'Your purchase provides educational materials to children in need'
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  return React.createElement('section', {
+    className: 'relative h-[70vh] overflow-hidden'
+  },
+    // Image Container
+    React.createElement('div', {
+      className: 'relative w-full h-full'
+    },
+      heroImages.map((image, index) =>
+        React.createElement('div', {
+          key: index,
+          className: `absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`
+        },
+          React.createElement('img', {
+            src: image.url,
+            alt: image.title,
+            className: 'w-full h-full object-cover'
+          }),
+          React.createElement('div', {
+            className: 'absolute inset-0 bg-black bg-opacity-40'
+          })
+        )
+      )
+    ),
+
+    // Content Overlay
+    React.createElement('div', {
+      className: 'absolute inset-0 flex items-center justify-center text-white z-10'
+    },
+      React.createElement('div', {
+        className: 'container mx-auto px-4 text-center'
+      },
+        React.createElement('img', {
+          src: '/images/tatvaani-logo.png',
+          alt: 'Tatvaani',
+          className: 'h-24 w-auto mx-auto mb-6 filter drop-shadow-lg'
+        }),
+        React.createElement('h1', {
+          className: 'text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg'
+        }, heroImages[currentSlide].title),
+        React.createElement('p', {
+          className: 'text-xl md:text-2xl mb-4 text-tatvaani-gold font-semibold drop-shadow-lg'
+        }, heroImages[currentSlide].subtitle),
+        React.createElement('p', {
+          className: 'text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-lg'
+        }, heroImages[currentSlide].description),
+        React.createElement('button', {
+          onClick: () => setCurrentPage('products'),
+          className: 'bg-tatvaani-orange text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105'
+        }, 'Explore Our Heritage Collection')
+      )
+    ),
+
+    // Navigation Arrows
+    React.createElement('button', {
+      onClick: prevSlide,
+      className: 'absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 z-20'
+    },
+      React.createElement('i', { className: 'fas fa-chevron-left text-xl' })
+    ),
+    React.createElement('button', {
+      onClick: nextSlide,
+      className: 'absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-3 rounded-full transition-all duration-300 z-20'
+    },
+      React.createElement('i', { className: 'fas fa-chevron-right text-xl' })
+    ),
+
+    // Slide Indicators
+    React.createElement('div', {
+      className: 'absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20'
+    },
+      heroImages.map((_, index) =>
+        React.createElement('button', {
+          key: index,
+          onClick: () => setCurrentSlide(index),
+          className: `w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-tatvaani-orange scale-125' : 'bg-white bg-opacity-50 hover:bg-opacity-75'}`
+        })
+      )
+    )
+  );
+};
+
 // Home Page Component
 const HomePage = () => {
   const { setCurrentPage } = useAuth();
@@ -262,33 +394,8 @@ const HomePage = () => {
   }, []);
 
   return React.createElement('div', {},
-    // Hero Section
-    React.createElement('section', {
-      className: 'bg-gradient-to-r from-tatvaani-teal via-tatvaani-green to-tatvaani-orange text-white py-20 relative overflow-hidden'
-    },
-      React.createElement('div', {
-        className: 'absolute inset-0 bg-black bg-opacity-20'
-      }),
-      React.createElement('div', {
-        className: 'container mx-auto px-4 text-center relative z-10'
-      },
-        React.createElement('img', {
-          src: '/images/tatvaani-logo.png',
-          alt: 'Tatvaani',
-          className: 'h-32 w-auto mx-auto mb-6'
-        }),
-        React.createElement('p', {
-          className: 'text-xl md:text-2xl mb-8 opacity-90'
-        }, 'Essence of India\'s Rich Heritage'),
-        React.createElement('p', {
-          className: 'text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed'
-        }, 'Discover authentic handcrafted treasures that tell stories of tradition, sustainability, and social impact. Every purchase supports rural artisans and provides education to underprivileged children.'),
-        React.createElement('button', {
-          onClick: () => setCurrentPage('products'),
-          className: 'bg-white text-tatvaani-teal px-8 py-4 rounded-lg text-lg font-semibold hover:bg-opacity-90 transition-colors shadow-lg'
-        }, 'Explore Products')
-      )
-    ),
+    // Hero Section - Image Carousel
+    React.createElement(HeroCarousel, { setCurrentPage }),
 
     // Social Impact Banner
     React.createElement('section', {
