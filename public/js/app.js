@@ -133,11 +133,7 @@ const Header = () => {
           React.createElement('img', {
             src: '/images/tatvaani-logo.png',
             alt: 'Tatvaani - Essence of India',
-            className: 'h-16 w-auto mr-3',
-            onError: (e) => {
-              console.log('Logo failed to load');
-              e.target.style.display = 'none';
-            }
+            className: 'h-16 w-auto mr-3'
           }),
           React.createElement('div', {
             className: 'hidden md:block'
@@ -291,14 +287,8 @@ const HomePage = () => {
         React.createElement('img', {
           src: '/images/tatvaani-logo.png',
           alt: 'Tatvaani',
-          className: 'h-24 w-auto mx-auto mb-6 filter brightness-0 invert'
+          className: 'h-32 w-auto mx-auto mb-6'
         }),
-        React.createElement('h1', {
-          className: 'text-5xl md:text-6xl font-bold mb-6'
-        }, 'Tatvaani'),
-        React.createElement('p', {
-          className: 'text-2xl md:text-3xl mb-4 hindi-text font-semibold'
-        }, 'तत्वानि'),
         React.createElement('p', {
           className: 'text-xl md:text-2xl mb-8 opacity-90'
         }, 'Essence of India\'s Rich Heritage'),
@@ -1754,7 +1744,7 @@ const AuthPage = () => {
         React.createElement('img', {
           src: '/images/tatvaani-logo.png',
           alt: 'Tatvaani',
-          className: 'h-16 w-auto mx-auto mb-4'
+          className: 'h-20 w-auto mx-auto mb-4'
         }),
         React.createElement('h2', {
           className: 'text-2xl font-bold text-gray-800'
@@ -1857,16 +1847,8 @@ const Footer = () => {
             React.createElement('img', {
               src: '/images/tatvaani-logo.png',
               alt: 'Tatvaani',
-              className: 'h-12 w-auto mr-3 brightness-0 invert'
-            }),
-            React.createElement('div', {},
-              React.createElement('h3', {
-                className: 'text-xl font-bold'
-              }, 'Tatvaani'),
-              React.createElement('p', {
-                className: 'text-sm text-gray-400 hindi-text'
-              }, 'तत्वानि')
-            )
+              className: 'h-12 w-auto mr-3'
+            })
           ),
           React.createElement('p', {
             className: 'text-gray-400 mb-4'
